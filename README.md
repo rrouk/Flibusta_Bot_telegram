@@ -36,7 +36,7 @@ ADMIN_IDS=ВАШ_ID_ТЕЛЕГРАММ
   
 `docker compose up -d`
 
-Отблагодарить автора можно донатом на кошелек TRC20: TSCxhHQpSTpwwk8W1vJwPtyTm6Ep1eP5dd
+Отблагодарить автора можно донатом на кошелек TRC20: `TSCxhHQpSTpwwk8W1vJwPtyTm6Ep1eP5dd`
 
 
 
