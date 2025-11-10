@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  flibusta_bot:
+    # Имя контейнера
+    container_name: flibusta-base-bot
+    # Собираем образ из Dockerfile в текущей папке
+    build: .
+    restart: always
+    
+    # Команда для запуска (та же, что и в Dockerfile)
+    command: ["python", "Flibusta_bot.py"]
+    
+    volumes:
+      # 1. Монтируем папку с библиотекой на /app/books в контейнере
+      - E:/Books/fb2.Flibusta.Net:/app/books:ro 
+      # 2. Монтируем папку для данных (логи, downloads) на /app/data
+      - ./log/Log_FlibustaBase_bot.log:/app/log/Log_FlibustaBase_bot.log
+      - ./data/pending_users_flibusta.json:/app/data/pending_users_flibusta.json
+      - ./data/users_flibusta.json:/app/data/users_flibusta.json
+      - E:/Books/BotsTG/reader_data.db:/app/data/reader_data.db
+      
+    environment:
+      # Секреты из .env
+      BOT_TOKEN: ${FLIBUSTA_TOKEN}
+      ADMIN_IDS: ${ADMIN_IDS}
+      
+      # Пути внутри контейнера, куда были смонтированы ваши папки хоста.
+      INPX_FILE: /app/books/flibusta_fb2_local.inpx
+      BOOKS_DIR: /app/books
+      # Остальные пути, если они используются в коде
+      READER_FOLDER: /app/data/reader
+      DOWNLOAD_FOLDER: /app/data/downloads
+
