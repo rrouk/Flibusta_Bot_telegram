@@ -35,10 +35,9 @@ except Exception:
     ADMIN_IDS = []
 
 # Пути к файлам и директориям
-READER_FOLDER = os.getenv('READER_FOLDER', '/app/data/reader')
-INPX_FILE = os.getenv('INPX_FILE', '/app/books/flibusta_local.inpx')
-BOOKS_DIR = os.getenv('BOOKS_DIR', '/app/books')
-DOWNLOAD_FOLDER = os.getenv('DOWNLOAD_FOLDER', '/app/data/downloads')
+INPX_FILE = "/app/books/flibusta_fb2_local.inpx"
+BOOKS_DIR = "/app/books"
+DOWNLOAD_FOLDER = "/app/data/downloads"
 USERS_JSON_FILE =  "/app/data/users_flibusta.json"
 PENDING_USERS_JSON_FILE = "/app/data/pending_users_flibusta.json"
 LOG_FILE = "/app/log/Log_FlibustaBase_bot.log"
@@ -49,7 +48,6 @@ if not BOT_TOKEN:
     sys.exit(1)
     
 os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
-os.makedirs(READER_FOLDER, exist_ok=True)
 
 # Поля в .inp файле
 FIELDS = ['AUTHOR', 'GENRE', 'TITLE', 'SERIES', 'SERNO', 'FILE', 'SIZE', 'LIBID', 'DEL', 'EXT', 'DATE', 'LANG', 'RATING', 'KEYWORDS']
